@@ -2,8 +2,14 @@ import "./HomePage.css"
 function NavBar() {
   return (
     <>
-      <h1>Welcome to GrowHabit</h1>
-      <h2>GrowHabit helps you keep track of your habits and motivate you more to follow your habits.</h2>
+    <div className="navbar">
+        <div className="links">
+        <a href="#home">Home</a>
+        <a href="#info">Info</a>
+        <a href="#contact">Contact</a>
+        <a href="#login">Login</a>
+      </div>
+    </div>
     </>
   );
 }
