@@ -1,15 +1,16 @@
 import { useState } from "react";
 import "./Tracker.css"
 function Tracker() {
-    const [habits,setNewHabit] = useState(0)
+    const [habits,setNewHabit] = useState({})
     const updateHabits = () => {
-        setNewHabit(habits+1)
+        setNewHabit()
     }
     return (
         <>
-        <div className="add_habit">
-            <h1>Create A new Habit</h1>
-            <button onClick={updateHabits}>Add New Habit</button>
+        <h1>Create A new Habit</h1>
+        <div id="add_habit">
+            <input placeholder="Enter new Habit..."/>
+            <button onClick={updateHabits}>Add</button>
         </div>
         </>
     );
