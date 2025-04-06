@@ -1,3 +1,6 @@
 #add_habit {
     display: flex;
 }
+.habit_element {
+    list-style: none;
+}
