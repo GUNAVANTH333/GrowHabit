@@ -11,10 +11,6 @@ function Tracker() {
     return (
         <>
         <h1>Create A new Habit</h1>
-        {/* <div id="add_habit">
-            <input placeholder="Enter new Habit..."/>
-            <button onClick={updateHabits}>Add</button>
-        </div> */}
         <input value= {input} placeholder="Type new Habit..." onChange={(event) => setInput(event.target.value)}></input>
         <button onClick={updateHabits}>Add Habit</button>
         <ul>
