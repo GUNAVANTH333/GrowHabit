@@ -4,11 +4,11 @@ function NavBar() {
         <>
         <div className="nav">
             <div>
-                <ul className="nav-links">
-                    <li className="links">Habits</li>
-                    <li className="links">Pending Habits</li>
-                    <li className="links">Tasks</li>
-                </ul>
+                <div className="nav-links">
+                    <a className="links">Habits</a>
+                    <a className="links">Pending Habits</a>
+                    <a className="links">Tasks</a>
+                </div>
             </div>
         </div>
         </>

@@ -22,6 +22,7 @@ function Tracker() {
 
   return (
     <>
+    <div id="tracker-main">
       <h1>Create A new Habit</h1>
       <input
         value={input}
@@ -41,6 +42,7 @@ function Tracker() {
           </li>
         ))}
       </ul>
+      </div>
     </>
   );
 }

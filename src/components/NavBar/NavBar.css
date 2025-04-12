@@ -8,8 +8,13 @@
     padding: 20px;
     margin-top: 60px;
     background-color: bisque;
+    display: flex;
+    flex-direction: column;
 }
 .links {
+    overflow: hidden;
+    text-decoration: none;
+    font-weight: bold;
     margin-left: 20px;
     padding: 5px;
 }

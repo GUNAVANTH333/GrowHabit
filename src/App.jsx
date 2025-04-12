@@ -4,8 +4,9 @@ import "./App.css"
 function App() {
     return (
         <>
-        <div className="main">
-            <NavBar/>
+        <NavBar/>
+        <div id="main">
+            <Tracker/>
         </div>
         </>
     )
