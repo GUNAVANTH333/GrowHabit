@@ -1,0 +1,15 @@
+.nav {
+    background-color: #FDFFFF;
+    width: 20vw;
+    height: 100vh;
+    position: fixed;
+}
+.nav-links {
+    padding: 20px;
+    margin-top: 60px;
+    background-color: bisque;
+}
+.links {
+    margin-left: 20px;
+    padding: 5px;
+}
