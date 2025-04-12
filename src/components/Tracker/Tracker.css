@@ -7,7 +7,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-input {
+.habit_input {
   padding: 10px;
   font-size: 16px;
   border: 2px solid #ccc;
@@ -18,11 +18,11 @@ input {
   transition: border-color 0.3s;
 }
 
-input:focus {
+.habit_input:focus {
   border-color: #4caf50;
 }
 
-button {
+.add_habit {
   padding: 10px 20px;
   background-color: #4caf50;
   color: white;
@@ -33,11 +33,11 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
+.add_habit:hover {
   background-color: #45a049;
 }
 
-ul {
+.habit_list {
   list-style-type: none;
   padding-left: 0;
 }

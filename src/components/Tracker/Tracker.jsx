@@ -23,14 +23,15 @@ function Tracker() {
   return (
     <>
     <div id="tracker-main">
-      <h1>Create A new Habit</h1>
+      <h1>Create A new Habit(hello user)</h1>
       <input
+        className="habit_input"
         value={input}
         placeholder="Type new Habit..."
         onChange={(event) => setInput(event.target.value)}
       />
-      <button onClick={updateHabits}>Add Habit</button>
-      <ul>
+      <button className="add_habit" onClick={updateHabits}>Add a New Habit</button>
+      <ul className="habit-list">
         {habits.map((habit, index) => (
           <li
             key={index}
