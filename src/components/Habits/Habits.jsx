@@ -19,7 +19,7 @@ function InputHabit({input}) {
         <>
         {filteredHabits.map((item) => (
               <ul>
-              <li key={item.emoji}>{item.name}</li>
+              <li key={item.id}>{item.emoji} {item.name}</li>
               </ul>
             ))}
         </>
