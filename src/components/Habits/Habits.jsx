@@ -17,11 +17,15 @@ function InputHabit({input}) {
     );
     return (
         <>
-        {filteredHabits.map((item) => (
-              <ul>
-              <li key={item.id}>{item.emoji} {item.name}</li>
-              </ul>
-            ))}
+          <div style={{ position: "relative" }}>
+            <div className="dropdown_suggestions">
+              {filteredHabits.map((item) => (
+                <div key={item.id} className="dropdown_item">
+                  {item.emoji} {item.name}
+                </div>
+              ))}
+            </div>
+          </div>
         </>
     );
 }
