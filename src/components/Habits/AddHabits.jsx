@@ -29,7 +29,7 @@ function Habits() {
   return (
     <>
     <div id="habits-main">
-      <h1>Create A new Habit(hello user)</h1>
+      <h1>Hello, GoodMorning User</h1>
       {addHabit ? <div><input
         className="habit_input"
         value={input}
