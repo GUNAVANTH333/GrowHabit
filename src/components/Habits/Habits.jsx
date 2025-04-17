@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function InputHabit({ input,habits,setNewHabit,setInput }) {
+function InputHabit({ input,habits,setNewHabit,setInput,addHabit,setAddHabit }) {
   const [data, setData] = useState([]);
   const [filteredHabits, setFilteredHabits] = useState([]);
 
@@ -24,6 +24,7 @@ function InputHabit({ input,habits,setNewHabit,setInput }) {
   const handleSuggestionClick = (emoji,habitName) => {
     setNewHabit([...habits,{ name: emoji+habitName , streak: 0}]);
     setInput("")
+    setAddHabit(!addHabit)
   };
 
   return (

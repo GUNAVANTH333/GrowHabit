@@ -38,7 +38,7 @@ function Habits() {
         }
         /> 
         <button className="add_habit" onClick={updateHabits}>Add a New Habit</button>
-        <InputHabit input={input} habits={habits} setNewHabit={setNewHabit} setInput={setInput}/>
+        <InputHabit input={input} habits={habits} setNewHabit={setNewHabit} setInput={setInput} addHabit={addHabit} setAddHabit={setAddHabit}/>
         </div>
         :
       <button className="add_habit" onClick={updateHabits}>Add a New Habit</button>}
