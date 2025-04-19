@@ -12,10 +12,12 @@ function ToDoList(){
             alert("Please enter a ToDo before adding it.");
             return;
           }
-          setTodo([...Todo,todoInput]);
+          setTodo([...Todo,{text: todoInput, id: Date.now()}]);
           setTodoInput("");
         }
-    
+      };
+    const handleRemove = (id) => {
+        setTodo(Todo.filter((item) => item.id !== id))
       };
     return (
         <>
@@ -33,10 +35,11 @@ function ToDoList(){
           <ul>
               {Todo.map((item, index) => 
                 <li
+                  onClick={()=>handleRemove(item.id)}
                   key={index}
                   className="habit_element"
                 >
-                  {item}
+                  {item.text}
                 </li>
               )}
           </ul>
