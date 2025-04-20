@@ -28,33 +28,53 @@ function Habits() {
 
   return (
     <>
-    <div id="habits-main">
-      <h1>Hello, GoodMorning User</h1>
-      {addHabit ? <div><input
-        className="habit_input"
-        value={input}
-        placeholder="Type new Habit..."
-        onChange={(event) => setInput(event.target.value)
-        }
-        /> 
-        <button className="add_habit" onClick={updateHabits}>Add a New Habit</button>
-        <InputHabit input={input} habits={habits} setNewHabit={setNewHabit} setInput={setInput} addHabit={addHabit} setAddHabit={setAddHabit}/>
-        </div>
-        :
-      <button className="add_habit" onClick={updateHabits}>Add a New Habit</button>}
-      <ul className="habit-list">
-        {habits.map((habit, index) => (
-          <li
-            key={index}
-            className="habit_element"
-            onClick={() => handleHabitClick(index)}
-          >
-            {habit.name}
-            <span className="streak_counter">{habit.streak}</span>
-          </li>
-        ))}
-      </ul>
+<div id="habits-main">
+  <div className="habit-header">
+    <h1>Hello, GoodMorning User</h1>
+    {addHabit ? (
+      <div className="add-habit-container">
+        <input
+          className="habit_input"
+          value={input}
+          placeholder="Type new Habit..."
+          onChange={(event) => setInput(event.target.value)}
+        />
+        <button className="add_habit" onClick={updateHabits}>
+          Add a New Habit
+        </button>
       </div>
+    ) : (
+      <button className="add_habit" onClick={updateHabits}>
+        Add a New Habit
+      </button>
+    )}
+  </div>
+
+  {addHabit && (
+    <InputHabit
+      input={input}
+      habits={habits}
+      setNewHabit={setNewHabit}
+      setInput={setInput}
+      addHabit={addHabit}
+      setAddHabit={setAddHabit}
+    />
+  )}
+
+  <ul className="habit-list">
+    {habits.map((habit, index) => (
+      <li
+        key={index}
+        className="habit_element"
+        onClick={() => handleHabitClick(index)}
+      >
+        {habit.name}
+        <span className="streak_counter">{habit.streak}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
     </>
   );
 }

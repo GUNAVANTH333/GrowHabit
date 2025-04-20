@@ -37,18 +37,23 @@ h1 {
   background-color: #45a049;
 }
 
-.habit_list {
-  list-style-type: none;
+.habit-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  gap: 16px;
   padding-left: 0;
+  justify-content: center;
 }
 
 .habit_element {
   background-color: #fff;
-  padding: 10px 20px;
-  margin: 8px 0;
-  width: 400px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(50% - 20px);
+  max-width: 45%;
+  min-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: 18px;
   color: #333;
   display: flex;
@@ -56,6 +61,7 @@ h1 {
   align-items: center;
   transition: background-color 0.3s, transform 0.2s;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .habit_element:hover {
