@@ -1,3 +1,4 @@
+
 #habits-main {
   padding-top: 40px;
 }
@@ -38,6 +39,7 @@ h1 {
 }
 
 .habit-list {
+  user-select: none;
   display: flex;
   flex-wrap: wrap;
   margin: 10px;
@@ -65,11 +67,11 @@ h1 {
 }
 
 .habit_element:hover {
-  background-color: #f1f1f1;
   transform: translateY(-3px);
 }
 
 .streak_counter {
+  width: 20px;
   background-color: #4caf50;
   color: white;
   padding: 5px 10px;

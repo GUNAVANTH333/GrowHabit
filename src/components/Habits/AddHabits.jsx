@@ -67,10 +67,9 @@ function Habits() {
       <div className="habit_element">
       <div
         key={index}
-        onClick={() => handleHabitClick(index)}
       >
         {habit.name}
-        <span className="streak_counter">{habit.streak}</span>
+        <span className="streak_counter" onClick={() => handleHabitClick(index)}>{habit.streak}</span>
       </div>
       <EllipsisMenu 
       onReset={() => {
