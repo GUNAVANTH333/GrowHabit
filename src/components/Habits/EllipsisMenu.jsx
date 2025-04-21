@@ -32,46 +32,19 @@ function EllipsisMenu({ onReset ,onDelete}) {
   }, []);
 
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }} ref={menuRef}>
-      <button onClick={toggleMenu} style={ellipsisButtonStyle} aria-label="More options">
-        ⋮
-      </button>
-      {isOpen && (
-        <div style={menuStyle}>          
-          <div onClick={() => handleAction('Delete')} style={menuItemStyle}>Delete</div>
-          <div onClick={() => handleAction('Reset')} style={menuItemStyle}>Reset</div>
-        </div>
-      )}
-    </div>
+      <div className="ellipsis-menu-container" ref={menuRef}>
+        <button onClick={toggleMenu} className="ellipsis-button" aria-label="More options">
+          ⋮
+        </button>
+        {isOpen && (
+          <div className="ellipsis-dropdown">
+            <div onClick={() => handleAction('Delete')} className="ellipsis-item">Delete</div>
+            <div onClick={() => handleAction('Reset')} className="ellipsis-item">Reset</div>
+          </div>
+        )}
+      </div>
+
   );
 }
-
-
-const ellipsisButtonStyle = {
-  background: 'none',
-  border: 'none',
-  fontSize: '28px',
-  cursor: 'pointer',
-  padding: '4px',
-  lineHeight: 1,
-  color: '#333',
-};
-
-const menuStyle = {
-  position: 'absolute',
-  top: '100%',
-  right: 0,
-  backgroundColor: '#fff',
-  border: '1px solid #ccc',
-  boxShadow: '0px 4px 6px rgba(0,0,0,0.1)',
-  zIndex: 1,
-};
-
-const menuItemStyle = {
-  padding: '8px 12px',
-  cursor: 'pointer',
-  borderBottom: '1px solid #eee',
-  backgroundColor: '#fff',
-};
 
 export default EllipsisMenu;
