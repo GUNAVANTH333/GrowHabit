@@ -72,7 +72,17 @@ function Habits() {
         {habit.name}
         <span className="streak_counter">{habit.streak}</span>
       </div>
-      <EllipsisMenu/>
+      <EllipsisMenu 
+      onReset={() => {
+        const updatedHabits = [...habits];
+        updatedHabits[index].streak = 0;
+        setNewHabit(updatedHabits);
+      }}
+      onDelete = {() => {
+        const updatedHabits = habits.filter((_, i) => i !== index);
+        setNewHabit(updatedHabits);
+      }}
+      />
       </div>
     ))}
   </div>

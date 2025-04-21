@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-function EllipsisMenu() {
+function EllipsisMenu({ onReset ,onDelete}) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -9,7 +9,12 @@ function EllipsisMenu() {
   };
 
   const handleAction = (action) => {
-    console.log(`${action} clicked`);
+    if (action === 'Reset') {
+      onReset();
+    }
+    if (action === 'Delete') {
+      onDelete();
+    }
     setIsOpen(false);
   };
 
@@ -32,8 +37,7 @@ function EllipsisMenu() {
         ⋮
       </button>
       {isOpen && (
-        <div style={menuStyle}>
-          <div onClick={() => handleAction('Edit')} style={menuItemStyle}>Edit</div>
+        <div style={menuStyle}>          
           <div onClick={() => handleAction('Delete')} style={menuItemStyle}>Delete</div>
           <div onClick={() => handleAction('Reset')} style={menuItemStyle}>Reset</div>
         </div>
@@ -41,6 +45,7 @@ function EllipsisMenu() {
     </div>
   );
 }
+
 
 const ellipsisButtonStyle = {
   background: 'none',
