@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Habits.css";
 import InputHabit from "./Habits";
+import EllipsisMenu from "./EllipsisMenu";
 
 function Habits() {
   const [habits, setNewHabit] = useState([]);
@@ -61,18 +62,20 @@ function Habits() {
     />
   )}
 
-  <ul className="habit-list">
+  <div className="habit-list">
     {habits.map((habit, index) => (
-      <li
+      <div className="habit_element">
+      <div
         key={index}
-        className="habit_element"
         onClick={() => handleHabitClick(index)}
       >
         {habit.name}
         <span className="streak_counter">{habit.streak}</span>
-      </li>
+      </div>
+      <EllipsisMenu/>
+      </div>
     ))}
-  </ul>
+  </div>
 </div>
 
     </>
