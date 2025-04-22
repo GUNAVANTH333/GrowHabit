@@ -39,7 +39,7 @@ h1 {
 }
 
 .habit-list {
-  user-select: non;
+  user-select: none;
   display: flex;
   flex-wrap: wrap;
   margin: 10px;
@@ -49,6 +49,7 @@ h1 {
 }
 
 .habit_element {
+  user-select: none;
   background-color: #fff;
   padding: 20px;
   flex: 1 1 calc(50% - 20px);
