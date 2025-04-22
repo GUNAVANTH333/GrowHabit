@@ -31,7 +31,6 @@ function Habits() {
     <>
 <div id="habits-main">
   <div className="habit-header">
-    <h1>Hello, GoodMorning User</h1>
     {addHabit ? (
       <div className="add-habit-container">
         <input

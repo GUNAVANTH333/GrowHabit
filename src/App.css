@@ -10,5 +10,8 @@ body {
   background-color: #f4f7fc;
 }
 #main {
-  margin-left: 25vw;
+  margin-left: 5vw;
+}
+.greetings {
+  margin-top: 50px;
 }
