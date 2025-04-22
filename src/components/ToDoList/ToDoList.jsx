@@ -32,7 +32,7 @@ function ToDoList(){
           :
           <button className="add_habit" onClick={updateTodo}>Add Todo</button>
         }
-          <ul>
+          <ul className="habit-list">
               {Todo.map((item, index) => 
                 <li
                   onClick={()=>handleRemove(item.id)}

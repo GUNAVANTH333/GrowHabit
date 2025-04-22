@@ -10,6 +10,7 @@ function App() {
         <NavBar/>
         <div id="main">
             <Habits/>
+            <ToDoList/>
         </div>
         </>
     )
