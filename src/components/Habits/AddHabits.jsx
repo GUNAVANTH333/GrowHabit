@@ -5,19 +5,15 @@ import EllipsisMenu from "./EllipsisMenu";
 import Checkbox from '@mui/material/Checkbox';
 
 function Habits() {
-  const [habits, setNewHabit] = useState([]);
+  // Initialize state with localStorage data
+  const [habits, setNewHabit] = useState(() => {
+    const savedHabits = localStorage.getItem('habits');
+    return savedHabits ? JSON.parse(savedHabits) : [];
+  });
   const [addHabit, setAddHabit] = useState(false);
   const [input, setInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
-  // Load habits from localStorage on component mount
-  useEffect(() => {
-    const savedHabits = localStorage.getItem('habits');
-    if (savedHabits) {
-      setNewHabit(JSON.parse(savedHabits));
-    }
-  }, []);
 
   // Save habits to localStorage whenever they change
   useEffect(() => {
@@ -75,12 +71,17 @@ function Habits() {
         alert("Please enter a Habit before adding it.");
         return;
       }
-      setNewHabit([...habits, { 
-        name: input, 
+      // Find the matching suggestion to get the emoji
+      const matchingSuggestion = suggestions.find(s => s.name.toLowerCase() === input.toLowerCase());
+      const newHabit = {
+        name: input,
+        emoji: matchingSuggestion?.emoji || '📝',
         streak: 0,
         completed: false,
         id: Date.now()
-      }]);
+      };
+      
+      setNewHabit(prevHabits => [...prevHabits, newHabit]);
       setInput("");
       setShowSuggestions(false);
     }
@@ -158,11 +159,14 @@ function Habits() {
                   sx={{
                     color: '#F4B183',
                     '&.Mui-checked': {
-                        color: '#F4B183',
+                      color: '#F4B183',
                     },
-                }}
+                  }}
                 />
-                <span className="habit-name">{habit.emoji} {habit.name}</span>
+                <span className="habit-name">
+                  <span className="habit-emoji">{habit.emoji}</span>
+                  {habit.name}
+                </span>
                 <span className="streak_counter">{habit.streak}</span>
                 <EllipsisMenu 
                   onReset={() => {
