@@ -156,13 +156,13 @@ function Habits() {
                   checked={habit.completed || false}
                   onChange={() => handleHabitComplete(habit.id)}
                   sx={{
-                    color: '#4caf50',
+                    color: '#F4B183',
                     '&.Mui-checked': {
-                      color: '#4caf50',
+                        color: '#F4B183',
                     },
-                  }}
+                }}
                 />
-                <span className="habit-name">{habit.name}</span>
+                <span className="habit-name">{habit.emoji} {habit.name}</span>
                 <span className="streak_counter">{habit.streak}</span>
                 <EllipsisMenu 
                   onReset={() => {
