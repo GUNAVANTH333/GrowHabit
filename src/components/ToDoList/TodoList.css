@@ -1,0 +1,93 @@
+#todo-main {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.todo-header {
+    margin-bottom: 20px;
+}
+
+.todo-header h2 {
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.todo-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.todo-input:focus {
+    outline: none;
+    border-color: #F4B183;
+}
+
+.add-todo-btn {
+    padding: 12px 24px;
+    background-color: #F4B183;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.add-todo-btn:hover {
+    background-color: #f3a06f;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.todo-content {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+.todo-text {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Completed todo styling */
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Animation for completing todos */
+.todo-item.completed {
+    opacity: 0.7;
+    transform: translateX(10px);
+}
+
+/* Hover effect */
+.todo-item:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+} 
