@@ -6,15 +6,16 @@ import "./App.css"
 
 function App() {
     return (
-        <>
-        <div id="main">
-          <div className="greetings">
-            <h1>Hello, GoodMorning User</h1>
-          </div>
-          <Habits/>
-          <ToDoList/>
+        <div className="app-container">
+            <SideBar />
+            <div className="main-content">
+                <div className="greetings">
+                    <h1>Hello, GoodMorning User</h1>
+                </div>
+                <Habits/>
+                <ToDoList/>
+            </div>
         </div>
-        </>
     )
 }
 

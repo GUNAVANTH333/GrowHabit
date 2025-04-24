@@ -15,3 +15,78 @@ body {
 .greetings {
   margin-top: 50px;
 }
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+#sidebar-main {
+    width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.greeting h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.greeting p {
+    color: #666;
+    font-size: 14px;
+}
+
+.habit-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new-habits-btn {
+    background-color: #F4B183;
+    color: black;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.browse-habits-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.new-habits-btn:hover {
+    background-color: #f3a06f;
+}
+
+.browse-habits-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.sidebar-calendar {
+    margin-top: 20px;
+}
