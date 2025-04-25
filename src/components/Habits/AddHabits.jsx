@@ -5,7 +5,6 @@ import EllipsisMenu from "./EllipsisMenu";
 import Checkbox from '@mui/material/Checkbox';
 
 function Habits() {
-  // Initialize state with localStorage data
   const [habits, setNewHabit] = useState(() => {
     const savedHabits = localStorage.getItem('habits');
     return savedHabits ? JSON.parse(savedHabits) : [];
@@ -15,12 +14,10 @@ function Habits() {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // Save habits to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('habits', JSON.stringify(habits));
   }, [habits]);
 
-  // Check and reset completed status at midnight
   useEffect(() => {
     const checkDate = () => {
       const now = new Date();
@@ -38,14 +35,12 @@ function Habits() {
       }
     };
 
-    checkDate(); // Check on mount
+    checkDate();
     
-    // Check every minute for date change
     const interval = setInterval(checkDate, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  // Load habit suggestions
   useEffect(() => {
     fetch('/habits.json')
       .then(response => response.json())
@@ -71,7 +66,6 @@ function Habits() {
         alert("Please enter a Habit before adding it.");
         return;
       }
-      // Find the matching suggestion to get the emoji
       const matchingSuggestion = suggestions.find(s => s.name.toLowerCase() === input.toLowerCase());
       const newHabit = {
         name: input,
