@@ -174,6 +174,7 @@ function Habits() {
                     setNewHabit(prevHabits => 
                       prevHabits.filter(h => h.id !== habit.id)
                     );
+                    
                   }}
                 />
               </div>
