@@ -53,6 +53,9 @@ function App() {
                                         <div className="todo-grid">
                                             <ToDoList />
                                         </div>
+                                        <div className="tracker-grid">
+                                            <Tracker />
+                                        </div>
                                     </div>
                                 </div>
                             </>

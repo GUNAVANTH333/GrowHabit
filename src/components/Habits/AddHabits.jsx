@@ -16,6 +16,8 @@ function Habits() {
 
   useEffect(() => {
     localStorage.setItem('habits', JSON.stringify(habits));
+    // Dispatch custom event when habits change
+    window.dispatchEvent(new CustomEvent('habitsUpdated', { detail: habits }));
   }, [habits]);
 
   useEffect(() => {
@@ -175,7 +177,6 @@ function Habits() {
                     setNewHabit(prevHabits => 
                       prevHabits.filter(h => h.id !== habit.id)
                     );
-                    
                   }}
                 />
               </div>
