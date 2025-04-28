@@ -11,7 +11,7 @@ const NavBar = () => {
         {username && (
           <div className="navbar-username">
             Welcome, {username}
-          </div>
+        </div>
         )}
       </div>
     </nav>
