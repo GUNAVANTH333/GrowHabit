@@ -100,6 +100,7 @@ function Habits() {
   return (
     <>
       <div id="habits-main">
+        <h2 className="habits-title" style={{marginBottom: '18px', fontWeight: 700, fontSize: '2rem'}}>Daily Habits</h2>
         <div className="habit-header">
           {addHabit ? (
             <div className="add-habit-container">

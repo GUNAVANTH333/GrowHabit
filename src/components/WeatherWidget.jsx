@@ -91,28 +91,33 @@ const WeatherWidget = () => {
   const cityName = weather.name;
 
   return (
-    <div className="weather-widget">
-       <div className="weather-city" style={{marginTop: '0.5rem', fontWeight: 500, color: '#fff', fontSize: '1.1rem'}}>
-        {locationError ? `Showing weather for ${cityName}` : cityName}
+    <>
+    <div className="weather-container">
+      <h2 className="weather-title" style={{marginBottom: '18px', fontWeight: 700, fontSize: '2rem',textAlign: 'center'}}>Weather</h2>
+      <div className="weather-widget">
+        <div className="weather-city" style={{marginTop: '0.5rem', fontWeight: 500, color: '#fff', fontSize: '1.1rem'}}>
+          {locationError ? `Showing weather for ${cityName}` : cityName}
         </div>
-      <div className="weather-header">
-        <span className="weather-temp">{temp}°C <span className="weather-emoji">{emoji}</span></span>
+        <div className="weather-header">
+          <span className="weather-temp">{temp}°C <span className="weather-emoji">{emoji}</span></span>
+        </div>
+        <div className="weather-details">
+          <div>
+            <span className="label">Wind: </span>
+            <span className="value">{wind} km/h</span>
+          </div>
+          <div>
+            <span className="label">Pressure: </span>
+            <span className="value">{pressure} hPa</span>
+          </div>
+          <div>
+            <span className="label">Humidity: </span>
+            <span className="value">{humidity}%</span>
+          </div>
+        </div>
       </div>
-      <div className="weather-details">
-        <div>
-          <span className="label">Wind: </span>
-          <span className="value">{wind} km/h</span>
-        </div>
-        <div>
-          <span className="label">Pressure: </span>
-          <span className="value">{pressure} hPa</span>
-        </div>
-        <div>
-          <span className="label">Humidity: </span>
-          <span className="value">{humidity}%</span>
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 
