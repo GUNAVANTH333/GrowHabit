@@ -9,13 +9,18 @@ function App() {
     return (
         <div className="app-container">
             <SideBar />
-            <div className="main-content">
-                <div className="greetings">
-                    <h1>Hello, GoodMorning User</h1>
+            <div className="main-content-grid">
+                <div className="weather-grid">
+                    <WeatherWidget/>
                 </div>
-                <Habits/>
-                <ToDoList/>
-                <WeatherWidget/>
+                <div className="habits-grid">
+                    <Habits/>
+                </div>
+                <div className="todo-grid">
+                    <ToDoList/>
+                </div>
+                {/* Optionally add Tracker below or elsewhere */}
+                {/* <div className="tracker-grid"><Tracker/></div> */}
             </div>
         </div>
     )

@@ -90,3 +90,52 @@ body {
 .sidebar-calendar {
     margin-top: 20px;
 }
+
+.main-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "weather habits"
+    "todo todo";
+  gap: 2rem 2rem;
+  width: 100%;
+  padding: 2rem 1rem;
+  align-items: start;
+}
+
+.weather-grid {
+  grid-area: weather;
+  display: flex;
+  justify-content: center;
+}
+
+.habits-grid {
+  grid-area: habits;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-grid {
+  grid-area: todo;
+  display: flex;
+  justify-content: center;
+}
+
+/* Remove old habits-todo-grid styles */
+.habits-todo-grid { display: none; }
+
+@media (max-width: 900px) {
+  .main-content-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "weather"
+      "habits"
+      "todo";
+    gap: 1.2rem;
+    padding: 1rem 0.2rem;
+  }
+  .weather-grid, .habits-grid, .todo-grid {
+    justify-content: center;
+  }
+}

@@ -100,15 +100,15 @@ const WeatherWidget = () => {
       </div>
       <div className="weather-details">
         <div>
-          <span className="label">Wind</span>
+          <span className="label">Wind: </span>
           <span className="value">{wind} km/h</span>
         </div>
         <div>
-          <span className="label">Pressure</span>
+          <span className="label">Pressure: </span>
           <span className="value">{pressure} hPa</span>
         </div>
         <div>
-          <span className="label">Humidity</span>
+          <span className="label">Humidity: </span>
           <span className="value">{humidity}%</span>
         </div>
       </div>
