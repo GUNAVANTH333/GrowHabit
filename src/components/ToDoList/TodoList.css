@@ -1,7 +1,10 @@
 #todo-main {
     padding: 20px;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .todo-header {
@@ -12,12 +15,14 @@
     margin-bottom: 16px;
     color: #333;
     font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .todo-input-container {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .todo-input {
@@ -27,6 +32,7 @@
     border-radius: 8px;
     font-size: 14px;
     transition: border-color 0.2s ease;
+    width: 100%;
 }
 
 .todo-input:focus {
@@ -53,6 +59,7 @@
 .todo-list {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 .todo-item {
@@ -60,12 +67,14 @@
     border-radius: 8px;
     margin-bottom: 8px;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .todo-content {
     display: flex;
     align-items: center;
     padding: 12px;
+    width: 100%;
 }
 
 .todo-text {
@@ -73,6 +82,7 @@
     font-size: 14px;
     color: #333;
     transition: all 0.3s ease;
+    flex: 1;
 }
 
 /* Completed todo styling */
