@@ -32,6 +32,8 @@
   font-size: 1.1rem;
   color: #666;
   font-weight: 500;
+  position: absolute;
+  right: 2rem;
 }
 
 .navbar-login-form {

@@ -144,44 +144,52 @@ function Habits() {
         </div>
 
         <div className="habit-list">
-          {habits.map((habit) => (
-            <div 
-              key={habit.id}
-              className={`habit_element ${habit.completed ? 'completed' : ''}`}
-            >
-              <div className="habit-content">
-                <Checkbox
-                  checked={habit.completed || false}
-                  onChange={() => handleHabitComplete(habit.id)}
-                  sx={{
-                    color: '#F4B183',
-                    '&.Mui-checked': {
-                      color: '#F4B183',
-                    },
-                  }}
-                />
-                <span className="habit-name">
-                  <span className="habit-emoji">{habit.emoji}</span>
-                  {habit.name}
-                </span>
-                <span className="streak_counter">{habit.streak}</span>
-                <EllipsisMenu 
-                  onReset={() => {
-                    setNewHabit(prevHabits => 
-                      prevHabits.map(h => 
-                        h.id === habit.id ? { ...h, streak: 0 } : h
-                      )
-                    );
-                  }}
-                  onDelete={() => {
-                    setNewHabit(prevHabits => 
-                      prevHabits.filter(h => h.id !== habit.id)
-                    );
-                  }}
-                />
-              </div>
+          {habits.length === 0 ? (
+            <div className="empty-state">
+              <h3>Start Your Journey to Success! 🚀</h3>
+              <p>Create your first habit and begin your path to personal growth.</p>
+              <p>Small steps lead to big changes. What will you achieve today?</p>
             </div>
-          ))}
+          ) : (
+            habits.map((habit) => (
+              <div 
+                key={habit.id}
+                className={`habit_element ${habit.completed ? 'completed' : ''}`}
+              >
+                <div className="habit-content">
+                  <Checkbox
+                    checked={habit.completed || false}
+                    onChange={() => handleHabitComplete(habit.id)}
+                    sx={{
+                      color: '#F4B183',
+                      '&.Mui-checked': {
+                        color: '#F4B183',
+                      },
+                    }}
+                  />
+                  <span className="habit-name">
+                    <span className="habit-emoji">{habit.emoji}</span>
+                    {habit.name}
+                  </span>
+                  <span className="streak_counter">{habit.streak}</span>
+                  <EllipsisMenu 
+                    onReset={() => {
+                      setNewHabit(prevHabits => 
+                        prevHabits.map(h => 
+                          h.id === habit.id ? { ...h, streak: 0 } : h
+                        )
+                      );
+                    }}
+                    onDelete={() => {
+                      setNewHabit(prevHabits => 
+                        prevHabits.filter(h => h.id !== habit.id)
+                      );
+                    }}
+                  />
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>

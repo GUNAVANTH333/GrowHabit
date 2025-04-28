@@ -66,26 +66,34 @@ function ToDoList() {
             </div>
 
             <ul className="todo-list">
-                {todos.map((todo) => (
-                    <li
-                        key={todo.id}
-                        className={`todo-item ${todo.completed ? 'completed' : ''}`}
-                    >
-                        <div className="todo-content">
-                            <Checkbox
-                                checked={todo.completed}
-                                onChange={() => toggleTodo(todo.id)}
-                                sx={{
-                                    color: '#F4B183',
-                                    '&.Mui-checked': {
+                {todos.length === 0 ? (
+                    <div className="empty-state">
+                        <h3>Ready to Conquer the Day! 💪</h3>
+                        <p>Add your first task and start making progress.</p>
+                        <p>Every task completed is a step towards your goals.</p>
+                    </div>
+                ) : (
+                    todos.map((todo) => (
+                        <li
+                            key={todo.id}
+                            className={`todo-item ${todo.completed ? 'completed' : ''}`}
+                        >
+                            <div className="todo-content">
+                                <Checkbox
+                                    checked={todo.completed}
+                                    onChange={() => toggleTodo(todo.id)}
+                                    sx={{
                                         color: '#F4B183',
-                                    },
-                                }}
-                            />
-                            <span className="todo-text">{todo.text}</span>
-                        </div>
-                    </li>
-                ))}
+                                        '&.Mui-checked': {
+                                            color: '#F4B183',
+                                        },
+                                    }}
+                                />
+                                <span className="todo-text">{todo.text}</span>
+                            </div>
+                        </li>
+                    ))
+                )}
             </ul>
         </div>
     );
