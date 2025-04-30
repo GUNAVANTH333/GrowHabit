@@ -3,31 +3,56 @@ import './WeatherWidget.css';
 import axios from 'axios';
 import { FaSun, FaCloud, FaCloudRain, FaSnowflake } from 'react-icons/fa';
 
-const DEFAULT_CITY = 'London';
-
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [locationError, setLocationError] = useState(false);
   const [error, setError] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    const getUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setUserLocation({
+              lat: position.coords.latitude,
+              lon: position.coords.longitude
+            });
+          },
+          (error) => {
+            console.error('Error getting location:', error);
+            setLocationError(true);
+            setError('Unable to get your location. Please enable location services.');
+          }
+        );
+      } else {
+        setLocationError(true);
+        setError('Geolocation is not supported by your browser.');
+      }
+    };
+
+    getUserLocation();
+  }, []);
 
   useEffect(() => {
     const fetchWeather = async () => {
+      if (!userLocation && !locationError) return;
+
       try {
         const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-        console.log('Environment variables:', import.meta.env); // Log all env variables
-        console.log('API Key length:', API_KEY ? API_KEY.length : 0); // Log API key length
-        
         if (!API_KEY) {
           throw new Error('Weather API key is not configured');
         }
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${DEFAULT_CITY}&appid=${API_KEY}&units=metric`;
-        console.log('Making request to OpenWeatherMap API...');
+        let url;
+        if (userLocation) {
+          url = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.lat}&lon=${userLocation.lon}&appid=${API_KEY}&units=metric`;
+        } else {
+          url = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_KEY}&units=metric`;
+        }
 
         const response = await axios.get(url);
-        console.log('Weather response status:', response.status);
-        
         if (response.data.cod !== 200) {
           throw new Error(response.data.message || 'Failed to fetch weather data');
         }
@@ -35,18 +60,14 @@ const WeatherWidget = () => {
         setWeather(response.data);
         setLoading(false);
       } catch (err) {
-        console.error('Weather fetch error details:', {
-          message: err.message,
-          response: err.response?.data,
-          status: err.response?.status
-        });
-        setError(err.response?.data?.message || err.message || 'Failed to fetch weather data');
+        console.error('Weather fetch error:', err);
+        setError(err.message || 'Failed to fetch weather data');
         setLoading(false);
       }
     };
 
     fetchWeather();
-  }, []);
+  }, [userLocation, locationError]);
 
   const getWeatherEmoji = (main) => {
     switch (main) {
@@ -68,28 +89,46 @@ const WeatherWidget = () => {
   };
 
   if (loading) {
-    return <div className="weather-widget">Loading weather data...</div>;
+    return (
+      <div className="weather-widget">
+        <div className="weather-container">
+          <h2 className="weather-title">Loading weather data...</h2>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="weather-widget">Error: {error}</div>;
+    return (
+      <div className="weather-widget">
+        <div className="weather-container">
+          <h2 className="weather-title">Error</h2>
+          <div className="weather-error">{error}</div>
+        </div>
+      </div>
+    );
   }
 
   if (!weather || weather.cod !== 200) {
-    return <div className="weather-widget">Unable to fetch weather data. Please try again later.</div>;
+    return (
+      <div className="weather-widget">
+        <div className="weather-container">
+          <h2 className="weather-title">Unable to fetch weather data</h2>
+          <div className="weather-error">Please try again later</div>
+        </div>
+      </div>
+    );
   }
 
   const temp = Math.round(weather.main.temp);
   const wind = weather.wind.speed;
   const pressure = weather.main.pressure;
   const humidity = weather.main.humidity;
-  const icon = weather.weather[0].icon;
   const description = weather.weather[0].main;
   const emoji = getWeatherEmoji(description);
   const cityName = weather.name;
 
   return (
-    <>
     <div className="weather-container">
       <h2 className="weather-title" style={{marginBottom: '18px', fontWeight: 700, fontSize: '2rem',textAlign: 'center'}}>Weather</h2>
       <div className="weather-widget">
@@ -114,8 +153,7 @@ const WeatherWidget = () => {
           </div>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 

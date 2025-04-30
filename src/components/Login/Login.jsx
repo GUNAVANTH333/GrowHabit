@@ -76,6 +76,8 @@ const Login = () => {
                         />
                     </div>
                     <button type="submit" className="login-button">Login</button>
+                    <p>Email: test123@gmail.com</p>
+                    <p>Password: test@123</p>
                 </form>
                 <p className="signup-link">
                     Don't have an account? <a href="/signup">Sign up</a>

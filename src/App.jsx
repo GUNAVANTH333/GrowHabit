@@ -6,7 +6,7 @@ import ToDoList from "./components/ToDoList/ToDoList.jsx";
 import SideBar from "./components/SideBar.jsx";
 import WeatherWidget from "./components/WeatherWidget.jsx";
 import NavBar from "./components/NavBar.jsx";
-import Login from "./components/Habits/Login/Login.jsx";
+import Login from "./components/Login/Login.jsx";
 import "./App.css";
 
 function App() {
