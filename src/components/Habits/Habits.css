@@ -122,7 +122,6 @@
   flex-shrink: 0;
 }
 
-/* Completed habit styling */
 .habit_element.completed .habit-name {
   text-decoration: line-through;
   color: #888;
@@ -132,13 +131,11 @@
   opacity: 0.8;
 }
 
-/* Hover effect */
 .habit_element:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transform: none;
 }
 
-/* Suggestions dropdown */
 .dropdown_suggestions {
   position: absolute;
   top: 100%;
@@ -170,7 +167,6 @@
   color: #F4B183;
 }
 
-/* Animation for new habits */
 .habit_element {
   animation: slideIn 0.3s ease;
 }
@@ -186,7 +182,6 @@
   }
 }
 
-/* Ellipsis menu styling */
 .ellipsis-menu-container {
   position: relative;
   display: inline-block;

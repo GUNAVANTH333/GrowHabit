@@ -16,7 +16,6 @@ function Habits() {
 
   useEffect(() => {
     localStorage.setItem('habits', JSON.stringify(habits));
-    // Dispatch custom event when habits change
     window.dispatchEvent(new CustomEvent('habitsUpdated', { detail: habits }));
   }, [habits]);
 

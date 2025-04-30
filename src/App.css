@@ -128,8 +128,6 @@ body {
     display: flex;
     justify-content: center;
 }
-
-/* Remove old habits-todo-grid styles */
 .habits-todo-grid { display: none; }
 
 @media (max-width: 900px) {

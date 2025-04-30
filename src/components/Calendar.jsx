@@ -6,7 +6,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 
-// Styled wrapper for the calendar
 const CalendarWrapper = styled('div')(({ theme }) => ({
   '.MuiDateCalendar-root': {
     width: '100%',
@@ -14,7 +13,6 @@ const CalendarWrapper = styled('div')(({ theme }) => ({
     margin: 0,
     backgroundColor: 'transparent',
   },
-  // Header styling
   '.MuiPickersCalendarHeader-root': {
     paddingLeft: '24px',
     paddingRight: '24px',
@@ -24,7 +22,6 @@ const CalendarWrapper = styled('div')(({ theme }) => ({
     fontSize: '1rem',
     fontWeight: 600,
   },
-  // Day styling
   '.MuiDayCalendar-weekDayLabel': {
     color: '#757575',
     fontSize: '0.75rem',
@@ -53,7 +50,6 @@ const CalendarWrapper = styled('div')(({ theme }) => ({
       },
     },
   },
-  // Progress dots
   '.day-with-progress::after': {
     content: '""',
     position: 'absolute',
@@ -67,7 +63,6 @@ const CalendarWrapper = styled('div')(({ theme }) => ({
   },
 }));
 
-// Create custom theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -91,14 +86,12 @@ const theme = createTheme({
 function MyCalendar() {
   const [date, setDate] = React.useState(new Date());
 
-  // Example function to determine which dates have progress
   const shouldShowProgress = (date) => {
     if (!date) return false;
     const progressDates = [1, 5, 10, 15, 20, 25];
     return progressDates.includes(date.getDate());
   };
 
-  // Custom day renderer
   const ServerDay = (props) => {
     const { day, outsideCurrentMonth, ...other } = props;
     const hasProgress = !outsideCurrentMonth && shouldShowProgress(day);

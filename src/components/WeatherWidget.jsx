@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './WeatherWidget.css';
 
-const API_KEY = 'Your_Api_Key'; // OpenWeatherMap API key
+const API_KEY = 'Your_Api_Key';
 const DEFAULT_CITY = 'London';
-
+z
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
