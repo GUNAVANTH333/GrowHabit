@@ -15,17 +15,32 @@ const WeatherWidget = () => {
     const fetchWeather = async () => {
       try {
         const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+        console.log('Environment variables:', import.meta.env); // Log all env variables
+        console.log('API Key length:', API_KEY ? API_KEY.length : 0); // Log API key length
+        
         if (!API_KEY) {
           throw new Error('Weather API key is not configured');
         }
 
-        const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_KEY}&units=metric`
-        );
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${DEFAULT_CITY}&appid=${API_KEY}&units=metric`;
+        console.log('Making request to OpenWeatherMap API...');
+
+        const response = await axios.get(url);
+        console.log('Weather response status:', response.status);
+        
+        if (response.data.cod !== 200) {
+          throw new Error(response.data.message || 'Failed to fetch weather data');
+        }
+        
         setWeather(response.data);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
+        console.error('Weather fetch error details:', {
+          message: err.message,
+          response: err.response?.data,
+          status: err.response?.status
+        });
+        setError(err.response?.data?.message || err.message || 'Failed to fetch weather data');
         setLoading(false);
       }
     };
@@ -53,11 +68,15 @@ const WeatherWidget = () => {
   };
 
   if (loading) {
-    return <div className="weather-widget">Loading...</div>;
+    return <div className="weather-widget">Loading weather data...</div>;
+  }
+
+  if (error) {
+    return <div className="weather-widget">Error: {error}</div>;
   }
 
   if (!weather || weather.cod !== 200) {
-    return <div className="weather-widget">Unable to fetch weather data.</div>;
+    return <div className="weather-widget">Unable to fetch weather data. Please try again later.</div>;
   }
 
   const temp = Math.round(weather.main.temp);
