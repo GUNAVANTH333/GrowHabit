@@ -1,57 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import './WeatherWidget.css';
+import axios from 'axios';
+import { FaSun, FaCloud, FaCloudRain, FaSnowflake } from 'react-icons/fa';
 
-const API_KEY = 'Your_Api_Key';
 const DEFAULT_CITY = 'London';
-z
+
 const WeatherWidget = () => {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [locationError, setLocationError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchWeatherByCoords = async (lat, lon) => {
+    const fetchWeather = async () => {
       try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-        );
-        const data = await response.json();
-        setWeather(data);
-      } catch (error) {
-        setWeather(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const fetchWeatherByCity = async (city) => {
-      try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-        );
-        const data = await response.json();
-        setWeather(data);
-      } catch (error) {
-        setWeather(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
-        },
-        (error) => {
-          setLocationError(true);
-          fetchWeatherByCity(DEFAULT_CITY);
+        const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+        if (!API_KEY) {
+          throw new Error('Weather API key is not configured');
         }
-      );
-    } else {
-      setLocationError(true);
-      fetchWeatherByCity(DEFAULT_CITY);
-    }
+
+        const response = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_KEY}&units=metric`
+        );
+        setWeather(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchWeather();
   }, []);
 
   const getWeatherEmoji = (main) => {
